@@ -1,0 +1,26 @@
+.ct{
+    text-align: center;
+    text-justify: auto;
+    font-family:Manrope;
+}
+#foot{
+   margin-bottom: 20px;
+   margin-left:20%;
+   border:hidden;
+   display: flex;
+  flex-direction: row;
+}
+#btn3{
+
+margin-left: 10%;
+
+
+}
+#btn2{
+
+    margin-left: 10%;
+    
+    
+    }
+
+

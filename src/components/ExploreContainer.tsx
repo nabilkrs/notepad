@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './ExploreContainer.css';
+import Header from './header/header';
+import Footer from './footer/footer';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import Show from './show/show';
+
 
 interface ContainerProps { }
 
 const ExploreContainer: React.FC<ContainerProps> = () => {
   return (
-    <div className="container">
-      <strong>Ready to create an app?</strong>
-      <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-    </div>
+
+<Fragment>
+       <Show />
+  
+</Fragment>
+
+ 
+    
   );
 };
 
