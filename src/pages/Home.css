@@ -4,23 +4,17 @@
     font-family:Manrope;
 }
 #foot{
-   margin-bottom: 20px;
-   margin-left:20%;
-   border:hidden;
+   margin-bottom: 60px;
+  
+   border: none;
+   
+
    display: flex;
-  flex-direction: row;
+   flex-direction: row;
+   justify-content: space-around;
+  
 }
-#btn3{
-
-margin-left: 10%;
-
-
+#fb{
+  margin-bottom: 90px;
+  margin-right: 5px;
 }
-#btn2{
-
-    margin-left: 10%;
-    
-    
-    }
-
-

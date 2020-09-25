@@ -2,7 +2,7 @@ import React from 'react';
 import { Component } from 'react';
 import { table } from 'console';
 import {db} from '../../config';
-import { tabletLandscape, logoFirebase, timeSharp } from 'ionicons/icons';
+import { tabletLandscape, logoFirebase, timeSharp, trash } from 'ionicons/icons';
 import { IonRippleEffect,IonButton, IonIcon } from '@ionic/react';
 import { star } from 'ionicons/icons';
 import { h as h } from 'ionicons/dist/types/stencil-public-runtime';
@@ -30,7 +30,7 @@ class Show extends Component{
     state = {
        
       
-        fin : [{title:null,main:null,saved:null}]
+        fin : [{title:null,main:null,saved:null,id:""}]
         
       }
 
@@ -40,10 +40,10 @@ class Show extends Component{
        
       
         var fin = [{}]
-        db.collection("users").get().then((snapshot)=>{
+        db.collection("notes").get().then((snapshot)=>{
             
              snapshot.forEach((item)=>{
-                
+            
                /*  const c = {
                    title:item.data().title,
                    main:item.data().main,
@@ -85,7 +85,21 @@ doRefresh = (event: CustomEvent<RefresherEventDetail>)=> {
   }, 2000);
 }
 
+delete = (key:string)=>{
+  db.collection("notes").doc(key).delete().then(function() {
+    const toast = document.createElement('ion-toast');
+    toast.message = 'Note deleted successfully!';
+    toast.duration = 2000;
+    toast.color="medium";
 
+  
+    document.body.appendChild(toast);
+ toast.present();  
+ setTimeout(() => {
+  window.location.reload(false);
+}, 2000);
+})
+}
 
 render()
 {
@@ -98,15 +112,19 @@ return (<div>
     {
  myData.map((item,i) =>{
   return (
-    <div key={i}>
+    <div key={item.id}>
    
 
    <IonList>
+     <IonItemSliding>
     <IonItem>
   <IonLabel  className="list">{item.title}</IonLabel>
     </IonItem>
-  
+  <IonItemOptions side="end"onIonSwipe={()=>this.delete(item.id)} >
+    <IonItemOption color="danger" expandable onClick={()=>this.delete(item.id)}><IonIcon icon={trash}></IonIcon></IonItemOption>
 
+  </IonItemOptions>
+    </IonItemSliding>
   </IonList>
 
    
