@@ -40,6 +40,7 @@ import firebase from 'firebase';
 import firestore from 'firebase'
 import { reduceEachLeadingCommentRange } from 'typescript';
 import Add from './pages/add';
+import Shownote from './pages/shownote';
 
 function doRefresh(event: CustomEvent<RefresherEventDetail>) {
   console.log('Begin async operation');
@@ -59,6 +60,7 @@ const App: React.FC = () => (
       <IonRouterOutlet>
         <Route exact path="/" component={Home} />
         <Route path="/add" component={Add} />
+        <Route path="/shownote/:id" component={Shownote} />
 
  
 

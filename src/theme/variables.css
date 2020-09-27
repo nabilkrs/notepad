@@ -2,7 +2,28 @@
 http://ionicframework.com/docs/theming/ */
 
 /** Ionic CSS Variables **/
+
 :root {
+  --ion-color-nabeel: #46B3E6;
+  --ion-color-nabeel-rgb: 70,179,230;
+  --ion-color-nabeel-contrast: #fff;
+  --ion-color-nabeel-contrast-rgb: 0,0,0;
+  --ion-color-nabeel-shade: #3e9eca;
+  --ion-color-nabeel-tint: #59bbe9;
+
+
+  
+  --ion-color-base: var(--ion-color-nabeel);
+  --ion-color-base-rgb: var(--ion-color-nabeel-rgb);
+  --ion-color-contrast: var(--ion-color-nabeel-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-nabeel-contrast-rgb);
+  --ion-color-shade: var(--ion-color-nabeel-shade);
+  --ion-color-tint: var(--ion-color-nabeel-tint);
+  
+
+
+
+
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;

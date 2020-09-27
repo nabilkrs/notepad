@@ -20,6 +20,7 @@ import { RefresherEventDetail } from '@ionic/core';
 import { chevronDownCircleOutline } from 'ionicons/icons';
 import './show.css';
 import { Link } from 'react-router-dom';
+import Shownote from '../../pages/shownote';
 
 
 
@@ -100,6 +101,14 @@ delete = (key:string)=>{
 }, 2000);
 })
 }
+redir = (id:string)=>{
+
+alert("hello");
+
+}
+
+
+
 
 render()
 {
@@ -117,7 +126,7 @@ return (<div>
 
    <IonList>
      <IonItemSliding>
-    <IonItem>
+     <IonItem routerLink={"/shownote/"+item.id}>
   <IonLabel  className="list">{item.title}</IonLabel>
     </IonItem>
   <IonItemOptions side="end"onIonSwipe={()=>this.delete(item.id)} >

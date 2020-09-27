@@ -12,14 +12,15 @@ import { calendar, apps,flash,logoFacebook, logoTwitter, logoYoutube ,personCirc
 import { Link } from 'react-router-dom';
 
 function doRefresh(event: CustomEvent<RefresherEventDetail>) {
+
   console.log('Begin async operation');
-  event.preventDefault();
+ 
   setTimeout(() => {
-    event.preventDefault();
-    window.location.reload(false);
-    event.preventDefault();
+  
+    window.location.href=("/")
     event.detail.complete();
   }, 2000);
+  
 }
 const Home: React.FC = () => {
   return (
@@ -38,7 +39,7 @@ const Home: React.FC = () => {
         </IonHeader>
         
   
-  <IonRefresher slot="fixed"  onIonRefresh={doRefresh}>
+  <IonRefresher slot="fixed"  onIonRefresh={ doRefresh}>
   <IonRefresherContent></IonRefresherContent>
 </IonRefresher>
 <Header />
