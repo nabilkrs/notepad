@@ -41,7 +41,7 @@ class Show extends Component{
        
       
         var fin = [{}]
-        db.collection("notes").get().then((snapshot)=>{
+        db.collection("notes").orderBy("lvl").get().then((snapshot)=>{
             
              snapshot.forEach((item)=>{
             
@@ -67,16 +67,7 @@ class Show extends Component{
          
 
 }
-adddoc = ()=>{
 
-db.collection("users").doc().set({
- title : "work1" , main : "main1" , saved : 144 
-})
-
-
-
-
-}
 doRefresh = (event: CustomEvent<RefresherEventDetail>)=> {
   console.log('Begin async operation');
 

@@ -24,11 +24,16 @@ class Add extends Component{
     state = {
         title:"",
         main:"",
-        id:""
+        id:"",
+        lvl:0
 
 
     }
  UpdateNotes = ()=> {
+  var x = new Date();
+    
+  var d = new Date(x.getFullYear(), x.getMonth(), x.getDate(), x.getHours()-1, x.getMinutes(), x.getSeconds(), 0);
+ 
   db.collection("notes").get().then((snapshot)=>{
             
     snapshot.forEach((item)=>{
@@ -36,8 +41,9 @@ class Add extends Component{
      /*  db.collection("notes").doc().set({
          title : tit , main : ma , saved : 0,id : ""
         }) */
+        var  w= d.toString();
         db.collection("notes").doc(item.id).set({
-         title:item.data().title,main:item.data().main, saved:item.data().saved,id:item.id
+         title:item.data().title,main:item.data().main, saved:item.data().saved,id:item.id,createAt:w,lvl:item.data().lvl
         })
        
         })
@@ -55,9 +61,67 @@ class Add extends Component{
     
     addnote = (tit:string,ma:string)=>{
 
-        db.collection("notes").doc().set({
-         title : tit , main : ma , saved : 0,id : ""
-        }) 
+      var x = new Date();
+      
+      var d = new Date(x.getFullYear(), x.getMonth(), x.getDate(), x.getHours()-1, x.getMinutes(), x.getSeconds(), 0);
+     
+     db.collection("counter").get().then((snapshot)=>{
+    
+    snapshot.forEach((item)=>{
+
+     
+      this.setState({lvl:item.data().NumberOfNotes})
+      
+
+    })
+    this.setState({lvl:this.state.lvl-1})
+    console.log(this.state.lvl)
+
+
+
+    db.collection("counter").doc("007").set({
+
+      NumberOfNotes:this.state.lvl
+      
+      
+      })
+
+      var  w= d.toString();
+
+      db.collection("notes").doc().set({
+
+
+
+
+          
+      
+
+        title : tit , main : ma , saved : 0,id : "w",createAt:w,lvl:this.state.lvl
+        
+       }) 
+
+       db.collection("notes").get().then((snapshot)=>{
+            
+        snapshot.forEach((item)=>{
+    
+         
+            var  w= d.toString();
+            db.collection("notes").doc(item.id).set({
+             title:item.data().title,main:item.data().main, saved:item.data().saved,id:item.id,createAt:w,lvl:item.data().lvl
+            })
+           
+            })
+           
+        
+            
+    })
+     })
+   
+
+   
+     
+
+
     }
     myChangeHandler = (event:any)=>{
     let nam = event.target.name;

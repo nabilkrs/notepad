@@ -6,8 +6,8 @@
 #foot{
    margin-bottom: 60px;
   
-   border: none;
-   
+  
+   border-color: white;
 
    display: flex;
    flex-direction: row;
