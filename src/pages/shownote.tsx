@@ -1,16 +1,10 @@
 import React from 'react';
-import Show from '../components/show/show';
 import { Component } from 'react';
-import {IonToast,IonBackButton, IonButtons, IonContent, IonInput,IonHeader, IonTitle, IonToolbar, IonTextarea, IonItem, IonLabel, IonItemDivider, IonList, IonRouterLink, IonButton, IonFabList, IonAlert } from '@ionic/react';
+import {IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, IonTextarea, IonItem, IonButton, IonFabList } from '@ionic/react';
 import { IonFab, IonFabButton, IonFooter, IonIcon, IonPage} from '@ionic/react';
-import { calendar, personCircle,arrowBack, map,addCircle,flash,checkmark,bookmark,settings, informationCircle, pencil, copy, helpCircle, helpCircleOutline, helpCircleSharp, help } from 'ionicons/icons';
+import { arrowBack, flash,bookmark,copy, help, personCircle, ellipse, ellipsisVerticalCircle, ellipsisVertical} from 'ionicons/icons';
 
-import firebaseConfig from '../config';
 import {db} from '../config';
-import firebase from 'firebase';
-import firestore from 'firebase'
-import { database } from 'firebase';
-import { create } from 'domain';
 import './shownote.css';
 class Shownote extends Component{
 
@@ -84,7 +78,6 @@ updatenote = (key:string,title:string,main:string,saved:string,date:string,lvl:n
 
  
 
-
 }
 myChangeHandler = (event:any)=>{
   let nam = event.target.name;
@@ -105,6 +98,61 @@ presentAlert = ()=> {
   document.body.appendChild(alert);
   return alert.present();
 }
+relo=()=>{
+  return window.location.reload(true);
+}
+changetitle=(key:string)=>{
+var newtitle="";
+const alert = document.createElement('ion-alert');
+  alert.cssClass = 'my-custom-class';
+  alert.header = 'Title Update';
+  alert.cssClass='primary';
+  alert.inputs = [
+
+    {placeholder: 'New Title',
+  name:"new"}
+
+
+
+
+  
+  ]
+  alert.buttons = [{
+    text: 'Cancel',
+    role: 'cancel',
+    cssClass: 'secondary',
+   
+
+  },{
+    text: 'Update',
+ 
+    handler: (alertData) => {
+      
+      
+
+  this.updatenote(this.state.id,alertData.new,this.state.main,this.state.saved,this.state.date,this.state.lvl)
+
+     
+      window.location.reload(true);
+      
+
+
+    }
+
+
+
+
+  }];
+  
+  //buttons={['OK']}
+  document.body.appendChild(alert);
+  return alert.present();
+
+
+
+
+
+}
 
 render(){
 
@@ -120,7 +168,11 @@ render(){
          <IonButton href="/"> <IonIcon icon={arrowBack}></IonIcon>  </IonButton>
           <IonTitle id="head">{this.state.title}</IonTitle>
         </IonButtons>
-        
+        <IonButtons slot="primary">
+        <IonButton onClick={(e)=>this.changetitle(this.state.id)}>
+        <IonIcon slot="icon-only" icon={ellipsisVertical} />
+      </IonButton>
+        </IonButtons>
       </IonToolbar>
     </IonHeader>
 

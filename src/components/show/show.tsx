@@ -1,31 +1,10 @@
 import React from 'react';
 import { Component } from 'react';
-import { table } from 'console';
 import {db} from '../../config';
-import { tabletLandscape, logoFirebase, timeSharp, trash } from 'ionicons/icons';
-import { IonRippleEffect,IonButton, IonIcon } from '@ionic/react';
-import { star } from 'ionicons/icons';
-import { h as h } from 'ionicons/dist/types/stencil-public-runtime';
-import { AngularFireModule, FirebaseApp, FIREBASE_OPTIONS } from '@angular/fire';
-import { database } from 'firebase';
-import { IonList, IonRefresher, IonRefresherContent , IonItem, IonLabel, IonInput, IonToggle, IonRadio, IonCheckbox, IonItemSliding, IonItemOption, IonItemOptions, IonContent } from '@ionic/react';
-
-import firebaseConfig from '../../config';
-import firebase from 'firebase';
-import firestore from 'firebase'
-import { isTemplateExpression } from 'typescript';
-import { title } from 'process';
-import Affich from './affiche';
+import { trash } from 'ionicons/icons';
+import { IonList,  IonItem, IonLabel,IonIcon, IonItemSliding, IonItemOption, IonItemOptions} from '@ionic/react';
 import { RefresherEventDetail } from '@ionic/core';
-import { chevronDownCircleOutline } from 'ionicons/icons';
 import './show.css';
-import { Link } from 'react-router-dom';
-import Shownote from '../../pages/shownote';
-
-
-
-
-
 
 class Show extends Component{
     state = {
@@ -68,14 +47,7 @@ class Show extends Component{
 
 }
 
-doRefresh = (event: CustomEvent<RefresherEventDetail>)=> {
-  console.log('Begin async operation');
 
-  setTimeout(() => {
-    console.log('Async operation has ended');
-    event.detail.complete();
-  }, 2000);
-}
 
 delete = (key:string)=>{
   db.collection("notes").doc(key).delete().then(function() {
@@ -92,11 +64,7 @@ delete = (key:string)=>{
 }, 2000);
 })
 }
-redir = (id:string)=>{
 
-alert("hello");
-
-}
 
 
 

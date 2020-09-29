@@ -2,8 +2,8 @@ import { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import'./header.css';
 import React, { useState } from 'react';
-import {  IonTabs, IonTabBar, IonTabButton, IonIcon,  IonBadge , IonContent,IonSearchbar, IonHeader, IonPage, IonTitle, IonToolbar, IonInput, IonItem, IonLabel, IonList, IonItemDivider } from '@ionic/react';
-import Show from '../show/show';
+import { IonSearchbar} from '@ionic/react';
+
 
 class Header extends Component{
 render(){

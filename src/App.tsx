@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react';
-import { Redirect } from 'react-router-dom';
-import { IonApp, IonFooter, IonRouterOutlet } from '@ionic/react';
+import React from 'react';
+import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
 import {Route} from "react-router-dom";
@@ -22,36 +21,15 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import Footer from './components/footer/footer';
-import { IonContent,IonItem, IonLabel,IonList,  IonRefresher, IonRefresherContent ,IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import './pages/Home.css'
-import Show from './components/show/show';
-import Header from './components/header/header';
 
-import { database } from 'firebase';
 import { RefresherEventDetail } from '@ionic/core';
-import { chevronDownCircleOutline } from 'ionicons/icons';
 import './Front.css'
-import { IonTabs, IonTabBar, IonTabButton, IonIcon,  IonBadge } from '@ionic/react';
-import { calendar, personCircle, map,addCircle,bookmark,settings, informationCircle } from 'ionicons/icons';
 
 
-import firebase from 'firebase';
-import firestore from 'firebase'
-import { reduceEachLeadingCommentRange } from 'typescript';
 import Add from './pages/add';
 import Shownote from './pages/shownote';
 
-function doRefresh(event: CustomEvent<RefresherEventDetail>) {
-  console.log('Begin async operation');
-  event.preventDefault();
-  setTimeout(() => {
-    event.preventDefault();
-    window.location.reload(false);
-    event.preventDefault();
-    event.detail.complete();
-  }, 2000);
-}
 
 const App: React.FC = () => (
   <IonApp>

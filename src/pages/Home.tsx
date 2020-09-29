@@ -1,19 +1,15 @@
-import { IonButton, IonContent, IonFooter, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import {  IonContent, IonFooter, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import React from 'react';
-import ExploreContainer from '../components/ExploreContainer';
 import './Home.css';
-import {IonItem,IonFab,IonFabList, IonFabButton,IonRouterOutlet, IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel,IonList,  IonRefresher, IonRefresherContent  } from '@ionic/react';
-import { Route } from 'react-router';
+import {IonFab,IonFabList, IonFabButton,IonIcon, IonRefresher, IonRefresherContent  } from '@ionic/react';
 import { RefresherEventDetail } from '@ionic/core';
-import Footer from '../components/footer/footer';
 import Header from '../components/header/header';
 import Show from '../components/show/show';
-import { calendar, apps,flash,logoFacebook, logoTwitter, logoYoutube ,personCircle, map,addCircle,bookmark,settings, informationCircle } from 'ionicons/icons';
-import { Link } from 'react-router-dom';
+import { apps,addCircle,bookmark,settings } from 'ionicons/icons';
 
 function doRefresh(event: CustomEvent<RefresherEventDetail>) {
 
-  console.log('Begin async operation');
+event.preventDefault()
  
   setTimeout(() => {
   
@@ -39,7 +35,7 @@ const Home: React.FC = () => {
         </IonHeader>
         
   
-  <IonRefresher slot="fixed"  onIonRefresh={ doRefresh}>
+  <IonRefresher slot="fixed"  onIonRefresh={(e)=> doRefresh(e)}>
   <IonRefresherContent></IonRefresherContent>
 </IonRefresher>
 <Header />
@@ -48,7 +44,7 @@ const Home: React.FC = () => {
 
  
       </IonContent>
-    <IonFooter  id="foot">
+    <IonFooter  id="foot" className="ion-no-border">
       
     <IonFab id="fb" vertical="center" horizontal="end">
       <IonFabButton  color="white"><IonIcon icon={apps} /></IonFabButton>

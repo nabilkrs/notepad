@@ -1,22 +1,11 @@
 import { IonFab, IonFabButton, IonFooter, IonIcon, IonPage} from '@ionic/react';
-import React, { EventHandler, FormEvent, useState } from 'react';
+import React from 'react';
 import { Component } from 'react';
-import ReactDOM from 'react-dom';
-import Home from './Home';
-import { database } from 'firebase';
-
-import {IonToast,IonBackButton, IonButtons, IonContent, IonInput,IonHeader, IonTitle, IonToolbar, IonTextarea, IonItem, IonLabel, IonItemDivider, IonList } from '@ionic/react';
+import {IonBackButton, IonButtons, IonContent, IonInput,IonHeader, IonTitle, IonToolbar, IonTextarea, IonItem, IonLabel } from '@ionic/react';
 import './add.css';
-import { calendar, personCircle,arrowBack, map,addCircle,checkmark,bookmark,settings, informationCircle } from 'ionicons/icons';
-import { title } from 'process';
-import App from '../App';
+import { checkmark } from 'ionicons/icons';
 import {db} from '../config';
-import firebaseConfig from '../config';
-import firebase from 'firebase';
-import firestore from 'firebase'
-import { Toast } from '@ionic-native/toast/ngx';
-import { Redirect } from 'react-router';
-import { Link } from 'react-router-dom';
+
 
 class Add extends Component{
   
@@ -38,9 +27,6 @@ class Add extends Component{
             
     snapshot.forEach((item)=>{
 
-     /*  db.collection("notes").doc().set({
-         title : tit , main : ma , saved : 0,id : ""
-        }) */
         var  w= d.toString();
         db.collection("notes").doc(item.id).set({
          title:item.data().title,main:item.data().main, saved:item.data().saved,id:item.id,createAt:w,lvl:item.data().lvl
@@ -75,28 +61,16 @@ class Add extends Component{
 
     })
     this.setState({lvl:this.state.lvl-1})
-    console.log(this.state.lvl)
-
-
-
-    db.collection("counter").doc("007").set({
+  
+db.collection("counter").doc("007").set({
 
       NumberOfNotes:this.state.lvl
-      
-      
-      })
+ })
 
       var  w= d.toString();
 
       db.collection("notes").doc().set({
-
-
-
-
-          
-      
-
-        title : tit , main : ma , saved : 0,id : "w",createAt:w,lvl:this.state.lvl
+ title : tit , main : ma , saved : 0,id : "w",createAt:w,lvl:this.state.lvl
         
        }) 
 

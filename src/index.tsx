@@ -1,13 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import Footer from './components/footer/footer';
-import Add from './pages/add';
-import {Route} from "react-router-dom";
-import { IonApp, IonRouterOutlet } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
 import * as serviceWorker from './serviceWorker';
-import Home from './pages/Home';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
